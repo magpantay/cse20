@@ -89,5 +89,6 @@ public class Bobcar_Project1 {
 			System.out.println(""); //Creates a gap in between
 			System.out.println("Your total estimate is: $" + (int)(basePrice));
 		}
+		scan.close();
 	}
 }
