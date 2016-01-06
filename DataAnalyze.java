@@ -12,33 +12,19 @@ public class Project2Trials {
 		checkIntInput(sampleSize);
 
 		int trialAmount = 4;
-		int[] dataT0 = new int[sampleSize];
-		int[] dataT1 = new int[sampleSize];
-		int[] dataT2 = new int[sampleSize];
-		int[] dataT3 = new int[sampleSize];
+		int[][] data = new int[trialAmount][sampleSize]; //creates an array (length 4) of arrays (of length sampleSize)
 
 		for(int i = 0; i < trialAmount; i++){
 			System.out.println("Enter numbers for Trial " + i);
 			for (int j = 0; j < sampleSize; j++){
 				System.out.print("Enter sample #" + j + ": ");
-				if (i == 0){
-					dataT0[j] = in.nextInt();
-				}
-				else if (i == 1){
-					dataT1[j] = in.nextInt();
-				}
-				else if (i == 2){
-					dataT2[j] = in.nextInt();
-				}
-				else{
-					dataT3[j] = in.nextInt();
-				}
+				data[i][j] = in.nextInt();
 			}
 		}
 
-		printList(sampleSize, dataT0, dataT1, dataT2, dataT3);
+		printList(sampleSize, data);
 
-		int sum[] = findSum(trialAmount, sampleSize, dataT0, dataT1, dataT2, dataT3);
+		int sum[] = findSum(trialAmount, sampleSize, data);
 		int averages[] = findAverages(trialAmount, sum, sampleSize);
 
 		extremes(averages);
@@ -53,27 +39,27 @@ public class Project2Trials {
 		}
 	}
 
-	public static void printList(int sampleSize, int[] dataT0, int[] dataT1, int[] dataT2, int[] dataT3){
+	public static void printList(int sampleSize, int[][]data){
 		System.out.println("Sample # \t Trial 1 \t Trial 2 \t Trial 3 \t Trial 4");
 		for (int i = 0; i < sampleSize; i++){
 			System.out.print(i + "\t");
-			System.out.print("\t" + dataT0[i] + "\t");
-			System.out.print("\t" + dataT1[i] + "\t");
-			System.out.print("\t" + dataT2[i] + "\t");
-			System.out.print("\t" + dataT3[i] + "\t");
+			System.out.print("\t" + data[0][i] + "\t");
+			System.out.print("\t" + data[1][i] + "\t");
+			System.out.print("\t" + data[2][i] + "\t");
+			System.out.print("\t" + data[3][i] + "\t");
 			System.out.println("");
 		}
 
 		System.out.println("--------------------------------------------------------------------------------------------");
 	}
 
-	public static int[] findSum(int trialAmount, int sampleSize, int[] dataT0, int[] dataT1, int[] dataT2, int[] dataT3){
+	public static int[] findSum(int trialAmount, int sampleSize, int[][] data){
 		int[] sum = new int [trialAmount];
 		for (int i = 0; i < sampleSize; i++){
-			sum[0] += dataT0[i];
-			sum[1] += dataT1[i];
-			sum[2] += dataT2[i];
-			sum[3] += dataT3[i];
+			sum[0] += data[0][i];
+			sum[1] += data[1][i];
+			sum[2] += data[2][i];
+			sum[3] += data[3][i];
 		}
 		return sum;
 	}
